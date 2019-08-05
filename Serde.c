@@ -27,23 +27,22 @@ void main()
 	double Bmax; // расчет магнитной индукции при максимальном токе
 	double kzm;  //коэффициэнт заполнения окна медью
 	double Dpr; // диаметр провода
-	do
 		{
 		printf("BBOD: Uin Uout f(k) Rn L(u)\n");
-		scanf("%lf%lf%lf%lf%lf",&Uin,&Uout,&f,&Rn,&L);
+		scanf_s("%lf%lf%lf%lf%lf",&Uin,&Uout,&f,&Rn,&L);
 		D= (double)Uout/Uin; // коэф. заполнения
 		printf("\nD=%1.4f",D);
 		f=f*10*10*10; // перевод килоГерц в Герцы
 		imax= Uin*((double)D/Rn + (double)(D*(1-D))/(2*f*((double)L/1000000)));
 		printf("\nimax=%5.5f A",imax);
 		printf("\n\nBBOD uc dT\n");
-		scanf("%lf%lf",&uc,&dT);
+		scanf_s("%lf%lf",&uc,&dT);
 		Vm=(double)(2.5*1000*((double)L/1000000)*imax*imax)/(uc*((double)1.2/1000)*dT);
 		Vm=Vm*Vm*Vm;
 		Vm= sqrt(sqrt(Vm)); // в сантиметрах
 		printf("Vm=%4.5f cm^3\n",Vm);
 		printf("\nBBOD : le(cm) , Ae(cm^2), B(mm), Al(nH/w^2)\n");
-		scanf("%lf%lf%lf%lf",&ls,&Ae,&B,&Al);
+		scanf_s("%lf%lf%lf%lf",&ls,&Ae,&B,&Al);
 		w=(double)(((double)L/1000000)*((double)ls/100))/(4*((double)3.1415926/10000000)*uc*((double)Ae/10000));
 		w=sqrt(w);
 		w2=(double)(L*1000)/Al;
@@ -54,12 +53,12 @@ void main()
 		B=(double)B/2; //Радиус окна в мм
 		B= B*B*3.14159265; // площадь окна магнитопровода mm
 		printf("\nBBOD D(mm) provod obmotki\n");
-		scanf("%lf",&Dpr);
+		scanf_s("%lf",&Dpr);
 		Dpr=(double)Dpr/2;
 		Dpr= Dpr*Dpr*3.14159265; // Площадь поперечного сечения обмотки mm
 		kzm= (double)(Dpr*w)/B;
 		printf("kzm=%f\n",kzm);
-		getch();
+		_getch();
 		}
 	while(1); 
 }
